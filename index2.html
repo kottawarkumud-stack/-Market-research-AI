@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intelligent Market Research Assistant</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f5f7fb;
+}
+
+header{
+background:#1e3c72;
+background:linear-gradient(90deg,#1e3c72,#2a5298);
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:30px auto;
+}
+
+.search-box{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+.search-box input{
+flex:1;
+padding:14px;
+font-size:16px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+.search-box button{
+padding:14px 25px;
+border:none;
+background:#2a5298;
+color:white;
+font-size:16px;
+cursor:pointer;
+border-radius:8px;
+}
+
+.search-box button:hover{
+background:#163d7a;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+.card h3{
+color:#2a5298;
+margin-bottom:10px;
+}
+
+.report{
+margin-top:30px;
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+.report h2{
+color:#2a5298;
+margin-bottom:15px;
+}
+
+textarea{
+width:100%;
+height:220px;
+padding:10px;
+font-size:15px;
+resize:none;
+}
+
+footer{
+margin-top:30px;
+padding:20px;
+background:#2a5298;
+color:white;
+text-align:center;
+}
+</style>
+
+</head>
+<body>
+<script>
+  window.wxOConfiguration = {
+    orchestrationID: "77d31109d1b8419f8291204a85342740_859728e6-0c5a-422c-a75b-b7855e866943",
+    hostURL: "https://au-syd.watson-orchestrate.cloud.ibm.com",
+    rootElementID: "root",
+    deploymentPlatform: "ibmcloud",
+    crn: "crn:v1:bluemix:public:watsonx-orchestrate:au-syd:a/77d31109d1b8419f8291204a85342740:859728e6-0c5a-422c-a75b-b7855e866943::",
+    chatOptions: {
+        agentId: "11adb876-4618-4ebe-ad13-0b7657f801c8", 
+    }
+  };
+  setTimeout(function () {
+    const script = document.createElement('script');
+    script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
+    script.addEventListener('load', function () {
+        wxoLoader.init();
+    });
+    document.head.appendChild(script);
+  }, 0);                     
+</script>
+<header>
+<h1>📊 Intelligent Market Research Assistant</h1>
+<p>Analyze Industries • Market Trends • Competitors • SWOT</p>
+</header>
+
+<div class="container">
+
+<div class="search-box">
+<input type="text" id="company" placeholder="Enter Company or Industry">
+<button onclick="generateResearch()">Analyze</button>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Market Overview</h3>
+<p id="overview">No data available.</p>
+</div>
+
+<div class="card">
+<h3>Market Trends</h3>
+<p id="trends">No data available.</p>
+</div>
+
+<div class="card">
+<h3>Competitors</h3>
+<p id="competitors">No data available.</p>
+</div>
+
+<div class="card">
+<h3>SWOT Analysis</h3>
+<p id="swot">No data available.</p>
+</div>
+
+</div>
+
+<div class="report">
+
+<h2>Generated Research Report</h2>
+
+<textarea id="report" readonly></textarea>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Intelligent Market Research Assistant
+</footer>
+
+<script>
+
+function generateResearch(){
+
+let company=document.getElementById("company").value;
+
+if(company==""){
+alert("Please enter company or industry.");
+return;
+}
+
+document.getElementById("overview").innerHTML=
+company+" is currently experiencing steady market growth with increasing customer demand and digital transformation opportunities.";
+
+document.getElementById("trends").innerHTML=
+"• AI Integration<br>• Automation<br>• Sustainable Business<br>• Cloud Computing<br>• Data Analytics";
+
+document.getElementById("competitors").innerHTML=
+"Competitor A<br>Competitor B<br>Competitor C<br>Emerging Startups";
+
+document.getElementById("swot").innerHTML=
+"<b>Strength:</b> Strong Brand<br><br><b>Weakness:</b> High Competition<br><br><b>Opportunity:</b> Growing Market<br><br><b>Threat:</b> Economic Changes";
+
+let report=`
+===============================
+INTELLIGENT MARKET RESEARCH REPORT
+===============================
+
+Company/Industry:
+${company}
+
+--------------------------------
+
+MARKET OVERVIEW
+
+${company} is showing positive market growth.
+The industry is rapidly adopting digital technologies.
+Customer demand continues to increase.
+
+--------------------------------
+
+MARKET TRENDS
+
+• Artificial Intelligence
+• Cloud Computing
+• Business Automation
+• Data Analytics
+• Sustainability
+
+--------------------------------
+
+COMPETITOR ANALYSIS
+
+1. Competitor A
+2. Competitor B
+3. Competitor C
+
+--------------------------------
+
+SWOT ANALYSIS
+
+Strength
+- Strong Brand Recognition
+
+Weakness
+- Competitive Market
+
+Opportunity
+- Expanding Customer Base
+
+Threat
+- Economic Uncertainty
+
+--------------------------------
+
+RECOMMENDATION
+
+Invest in AI-driven analytics, improve customer engagement,
+and monitor competitors regularly for better decision-making.
+
+===============================
+`;
+
+document.getElementById("report").value=report;
+
+}
+
+</script>
+
+</body>
+</html>
